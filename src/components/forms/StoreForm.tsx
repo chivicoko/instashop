@@ -6,7 +6,7 @@ import InputTwo from '../inputs/InputTwo';
 const StoreForm = () => {
 
   return (
-    <div className='h-[75vh] px-5 md:px-5 space-y-3 md:mx-auto max-w-xl'>
+    <div className='h-[75vh] px-5 md:px-5 space-y-3 mx-auto max-w-xl w-full'>
       <div className="w-full min-h-32 h-fit relative py-3 rounded-xl border ">
         <label htmlFor="image" tabIndex={0} className='w-full flex flex-col items-center gap-2 font-semibold cursor-pointer absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 group'>
           <div className="relative size-20">

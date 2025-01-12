@@ -12,7 +12,6 @@ type ButtonProps = {
   required?: boolean;
   autoFocus?: boolean;
   checked?: boolean;
-  defaultChecked?: boolean;
 };
 
 const InputOne: React.FC<ButtonProps> = ({
@@ -25,7 +24,6 @@ const InputOne: React.FC<ButtonProps> = ({
   required = false,
   autoFocus = false,
   checked = false,
-  defaultChecked = false,
 }) => {
   const { pending } = useFormStatus() || {};
 
@@ -38,7 +36,6 @@ const InputOne: React.FC<ButtonProps> = ({
       placeholder={placeholderText}
       autoFocus={autoFocus}
       checked={checked}
-      defaultChecked={defaultChecked}
       className={`text-secondary rounded-xl p-[0.625rem] border outline-0 focus:ring-2 focus:ring-secondary focus:ring-offset-2 outline-none text-sm ${classes} ${pending || disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
     />
   );
