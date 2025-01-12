@@ -13,6 +13,7 @@ type ButtonProps = {
   required?: boolean;
   autoFocus?: boolean;
   checked?: boolean;
+  onChange?: () => void;
 };
 
 const InputTwo: React.FC<ButtonProps> = ({
@@ -26,6 +27,7 @@ const InputTwo: React.FC<ButtonProps> = ({
   required = false,
   autoFocus = false,
   checked = false,
+  onChange = () => {},
 }) => {
   const { pending } = useFormStatus() || {};
 
@@ -39,6 +41,7 @@ const InputTwo: React.FC<ButtonProps> = ({
         checked={checked}
         type={type}
         placeholder={placeholderText}
+        onChange={onChange}
         className={`block h-12 pt-2 px-3 text-base text-secondary bg-white border border-gray-300 rounded-xl appearance-none focus:outline-none focus:ring-[1px] focus:ring-primary peer ${classes} ${pending || disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       />
       <label 

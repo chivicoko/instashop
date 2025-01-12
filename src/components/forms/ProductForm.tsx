@@ -112,7 +112,7 @@ const ProductForm = () => {
                       
                       <label htmlFor="toggleSwitch" className="flex items-center cursor-pointer">
                         <div className="relative">
-                          <input type="checkbox" checked id="toggleSwitch" className="sr-only peer" />
+                          <input type="checkbox" checked onChange={() => {}} id="toggleSwitch" className="sr-only peer" />
                           <div className="block w-10 h-6 rounded-full bg-neutral-300 peer-checked:bg-primary transition-colors"></div>
                           <div className="dot absolute left-1 top-1 size-4 bg-white rounded-full transition-transform peer-checked:translate-x-full"></div>
                         </div>
@@ -160,7 +160,8 @@ const ProductForm = () => {
               <div className="w-full flex items-center gap-3 mt-[6px] px-6 md:px-8 mb-4">
                 <input 
                   type="checkbox" 
-                  id="variableProduct" 
+                  id="variableProduct"
+                  onChange={() => {}}
                   className=" size-4 border checked:border-transparent rounded-sm border-gray-300 appearance-none cursor-pointer custom-checkbox" 
                 />
                 <p id='variableProduct' className='text-xs'>This product is variable; has different colors, sizes, weight, materials, etc.</p>
@@ -292,14 +293,16 @@ const ProductForm = () => {
                   type="checkbox" 
                   id="variableProduct"
                   checked
+                  onChange={() => {}}
                   className="size-4 border checked:border-transparent rounded-sm border-gray-300 appearance-none cursor-pointer custom-checkbox" 
                 />
               </div>
               <div className="w-full flex items-center justify-between gap-3">
                 <p className='text-xs'>InstaShop shipping</p>
                 <input 
-                  type="checkbox" 
+                  type="checkbox"
                   id="variableProduct"
+                  onChange={() => {}} 
                   className="size-4 border checked:border-transparent rounded-sm border-gray-300 appearance-none cursor-pointer custom-checkbox" 
                 />
               </div>
