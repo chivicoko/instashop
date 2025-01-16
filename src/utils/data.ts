@@ -91,3 +91,43 @@ export const users = [
         ],
     },
 ]
+
+export const INITIAL_USER_DATA = {
+    initialEmail: "",
+    initialPhoneNumber: "",
+    profile: {
+        fullName: "",
+        userName: "",
+        phoneNumber: "",
+        email: "",
+    },
+    store: [
+        {
+            name: "",
+            tagName: "",
+            phoneNumber: "",
+            email: "",
+            category: "",
+            description: '',
+            products: [
+                {
+                    title: "",
+                    description: "",
+                    price: "",
+                    oldPrice: "",
+                    collections: [],
+                    inventoryStocks: 0,
+                    images: [],
+                    variants: {
+                        colors: [],
+                        sizes: [],
+                    },
+                    selfShipping: true,
+                    instaShopShipping: false,
+                },
+    
+            ]
+        }
+    ],
+}
+

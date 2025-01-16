@@ -1,8 +1,6 @@
 'use client';
 
-import { useFormStatus } from 'react-dom';
-
-type ButtonProps = {
+type InputProps = {
   key?: number;
   placeholderText?: string;
   floatingLabel?: string;
@@ -16,7 +14,7 @@ type ButtonProps = {
   onChange?: () => void;
 };
 
-const InputTwo: React.FC<ButtonProps> = ({
+const InputTwo: React.FC<InputProps> = ({
   key = null,
   placeholderText = ' ',
   floatingLabel = ' ',
@@ -29,8 +27,6 @@ const InputTwo: React.FC<ButtonProps> = ({
   checked = false,
   onChange = () => {},
 }) => {
-  const { pending } = useFormStatus() || {};
-
   return (
     <div className="relative w-full">
       <input 
@@ -39,10 +35,11 @@ const InputTwo: React.FC<ButtonProps> = ({
         required={required}
         autoFocus={autoFocus}
         checked={checked}
+        disabled={disabled}
         type={type}
         placeholder={placeholderText}
         onChange={onChange}
-        className={`block h-12 pt-2 px-3 text-base text-secondary bg-white border border-gray-300 rounded-xl appearance-none focus:outline-none focus:ring-[1px] focus:ring-primary peer ${classes} ${pending || disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`block h-12 pt-2 px-3 text-base text-secondary bg-white border border-gray-300 rounded-xl appearance-none focus:outline-none focus:ring-[1px] focus:ring-primary peer ${classes}`}
       />
       <label 
         htmlFor={id}

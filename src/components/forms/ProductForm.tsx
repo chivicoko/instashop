@@ -5,6 +5,7 @@ import InputOne from '../inputs/InputOne';
 import ButtonNeutral from '../button/ButtonNeutral';
 import Image from 'next/image';
 import InputTwo from '../inputs/InputTwo';
+import CheckboxInput from '../inputs/CheckboxInput';
 
 const ProductForm = () => {
   const [basicDetailsOpen, setBasicDetailsOpen] = useState<boolean>(true);
@@ -127,10 +128,10 @@ const ProductForm = () => {
                 ))
               }
 
-              <div className="w-full py-5 rounded-full bg-customGray hover:bg-neutral-200">
-                <label htmlFor="image" tabIndex={0} className='relative w-full flex items-center gap-2 font-semibold cursor-pointer'>
-                  <p className='text-xs text-primary absolute left-24 -translate-y-1/2 top-1/2'>Add image</p>
-                  <div className="size-8 absolute left-40 -translate-y-1/2 top-1/2">
+              <div className="w-full py-1 rounded-full bg-customGray hover:bg-neutral-200 flex justify-center items-center relative">
+                <label htmlFor="image" tabIndex={0} className='flex items-center gap-2 font-semibold cursor-pointer'>
+                  <p className='text-xs text-primary'>Add image</p>
+                  <div className="w-8 h-8 ml-2 relative">
                     <Image
                       src="/images/add_photo_alternate2.svg"
                       alt="Shopping Sale's icon"
@@ -142,6 +143,7 @@ const ProductForm = () => {
                 </label>
                 <InputOne id='image' type='file' classes="hidden" />
               </div>
+
             </div>
           </div>
         </div>
@@ -158,12 +160,7 @@ const ProductForm = () => {
             {inventoryVariantsOpen &&
             <>
               <div className="w-full flex items-center gap-3 mt-[6px] px-6 md:px-8 mb-4">
-                <input 
-                  type="checkbox" 
-                  id="variableProduct"
-                  onChange={() => {}}
-                  className=" size-4 border checked:border-transparent rounded-sm border-gray-300 appearance-none cursor-pointer custom-checkbox" 
-                />
+                <CheckboxInput id="inventoryVariations" />
                 <p id='variableProduct' className='text-xs'>This product is variable; has different colors, sizes, weight, materials, etc.</p>
               </div>
               <div className="space-y-2 mb-4 px-4 md:px-4">
@@ -267,13 +264,10 @@ const ProductForm = () => {
             }
 
             <div className='px-4 md:px-4'>
-              <div className="py-5 rounded-full bg-customGray hover:bg-neutral-200">
-                <label htmlFor="image" tabIndex={0} className='relative w-full flex items-center gap-2 font-semibold cursor-pointer text-center'>
-                  <p className='text-center text-2xl font-light text-primary absolute left-20 -translate-y-1/2 top-1/2'>+</p>
-                  <p className='text-center text-xs text-primary absolute left-[104px] -translate-y-1/2 top-1/2'>Add new option</p>
-                </label>
-                <InputOne id='image' type='file' classes="hidden text-center" />
-              </div>
+              <button className="w-full py-1 rounded-full bg-customGray font-semibold hover:bg-neutral-200 flex justify-center items-center gap-2 focus:ring-2 focus:ring-primary focus:ring-offset-2 outline-none">
+                <span className='text-center text-2xl font-light text-primary'>+</span>
+                <span className='text-center text-xs text-primary'>Add new option</span>
+              </button>
             </div>
           </div>
 
@@ -281,30 +275,22 @@ const ProductForm = () => {
             <div className='px-4 md:px-4 pt-3 pb-2 flex items-center gap-0 '>
               <p className='w-full font-semibold text-sm ml-1'>Shipping</p>
               <ButtonNeutral
-              onClick={handleShippingToggle}
-                icon1={<div className="relative size-5 rounded-full hover:bg-customGray"><Image src="/images/chevron_down.svg" sizes="100%" fill alt="Arrow Left" className={`transform ${shippingOpen ? 'rotate-180' : ''} transition-all duration-300 ease-in-out rounded-full object-cover`} /></div>}
+                onClick={handleShippingToggle}
+                icon1={
+                  <div className="relative size-5 rounded-full hover:bg-customGray">
+                    <Image src="/images/chevron_down.svg" sizes="100%" fill alt="Arrow Left" className={`transform ${shippingOpen ? 'rotate-180' : ''} transition-all duration-300 ease-in-out rounded-full object-cover`} />
+                  </div>}
               />
             </div>
             {shippingOpen && 
             <div className="w-full space-y-5 mt-5 px-4 md:px-4">
               <div className="w-full flex items-center justify-between gap-3">
                 <p className='text-xs'>Self shipping</p>
-                <input 
-                  type="checkbox" 
-                  id="variableProduct"
-                  checked
-                  onChange={() => {}}
-                  className="size-4 border checked:border-transparent rounded-sm border-gray-300 appearance-none cursor-pointer custom-checkbox" 
-                />
+                <CheckboxInput id="selfShipping" defaultChecked={true} />
               </div>
               <div className="w-full flex items-center justify-between gap-3">
                 <p className='text-xs'>InstaShop shipping</p>
-                <input 
-                  type="checkbox"
-                  id="variableProduct"
-                  onChange={() => {}} 
-                  className="size-4 border checked:border-transparent rounded-sm border-gray-300 appearance-none cursor-pointer custom-checkbox" 
-                />
+                <CheckboxInput id="instashopShipping" />
               </div>
             </div>
             }

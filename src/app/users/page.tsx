@@ -13,8 +13,14 @@ import ProductForm from '@/components/forms/ProductForm';
 import { FormEvent } from 'react';
 import ButtonLinkOne from '@/components/button/ButtonLinkOne';
 import Link from 'next/link';
+// import { INITIAL_USER_DATA } from '@/utils/data';
+// import { FormData } from '@/utils/types';
+
+// const USER_DATA: FormData = INITIAL_USER_DATA;
 
 const Users = () => {
+  // const [data, setData] = useState(USER_DATA);
+
   const {currentStepIndex, currentStep, stepForward, stepBack, isFirstStep} = useForms([
     <InitialForm key="initial" />,
     <BasicInfoForm key="basic-info" />,

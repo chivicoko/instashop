@@ -8,12 +8,12 @@
 }
   
 
-/* Add this CSS to customize the checkbox appearance */
+/* customize the checkbox */
 .custom-checkbox:checked {
-    background-color: #8A226F; /* Custom red background */
+    background-color: #8A226F;
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>');
     background-position: center;
-    background-size: 75%; /* Resize the checkmark */
+    background-size: 75%;
     background-repeat: no-repeat;
 }
   

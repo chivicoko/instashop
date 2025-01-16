@@ -1,8 +1,6 @@
 'use client';
 
-import { useFormStatus } from 'react-dom';
-
-type ButtonProps = {
+type InputProps = {
   key?: number;
   placeholderText?: string;
   id?: string;
@@ -15,7 +13,7 @@ type ButtonProps = {
   onChange?: () => void;
 };
 
-const InputOne: React.FC<ButtonProps> = ({
+const InputOne: React.FC<InputProps> = ({
   key = null,
   placeholderText = '',
   id = '',
@@ -27,7 +25,6 @@ const InputOne: React.FC<ButtonProps> = ({
   checked = false,
   onChange = () => {},
 }) => {
-  const { pending } = useFormStatus() || {};
 
   return (
     <input
@@ -38,8 +35,9 @@ const InputOne: React.FC<ButtonProps> = ({
       placeholder={placeholderText}
       autoFocus={autoFocus}
       checked={checked}
+      disabled={disabled}
       onChange={onChange}
-      className={`text-secondary rounded-xl p-[0.625rem] border outline-0 focus:ring-2 focus:ring-secondary focus:ring-offset-2 outline-none text-sm ${classes} ${pending || disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+      className={`text-secondary rounded-xl p-[0.625rem] border outline-0 focus:ring-2 focus:ring-secondary focus:ring-offset-2 outline-none text-sm ${classes}`}
     />
   );
 };
