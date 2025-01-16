@@ -31,13 +31,14 @@ const ProductPreview = () => {
     <div className='min-h-[80vh] h-fit'>
       <Slider {...settings}>
         {someImages.map((image, index) => (
-          <div key={image.id} className="relative w-full h-[62vh]">
+          <div key={image.id} className="relative w-full md:w-1/2 h-[62vh]">
             <Image
               src={image.img || "/images/imagePlaceholder.jpeg"}
               alt="Shopping Sale's icon"
               fill
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              // sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
               blurDataURL="/images/imagePlaceholder.jpeg"
               placeholder="blur"
             />

@@ -88,7 +88,7 @@ const Users = () => {
                 />
               </div>
             </button>
-            <Link href='/products' onClick={handleContinue} className='text-primary text-sm font-semibold'>Preview product</Link>
+            <Link href='/products' className='text-primary text-sm font-semibold'>Preview product</Link>
           </div>
           :
           <div className="flex items-center gap-1 px-5 sm:px-10 md:px-16 ">
