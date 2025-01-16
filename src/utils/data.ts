@@ -39,6 +39,31 @@ export const colors = [
     { id: 4, text: "blue" },
 ]
 
+export const productOptions = [
+    {
+        id: 1,
+        name: 'color',
+        options: [
+            { id: 1, text: "red" },
+            { id: 2, text: "white" },
+            { id: 3, text: "black" },
+            { id: 4, text: "blue" },
+        ]
+    },
+    {
+        id: 2,
+        name: 'size',
+        options: [
+            { id: 1, text: "xs" },
+            { id: 2, text: "sm" },
+            { id: 3, text: "md" },
+            { id: 4, text: "lg" },
+            { id: 5, text: "xl" },
+            { id: 6, text: "xxl" },
+        ]
+    },
+]
+
 export const collections = [
     { id: 1, text: "Quality goods" },
     { id: 2, text: "Nice designs" },

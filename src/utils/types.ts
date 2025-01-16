@@ -93,3 +93,13 @@ export type UserEmailProps = {
   email: string
 }
 
+interface Option {
+  id: number;
+  text: string;
+}
+
+export interface ProductOptionsProps {
+  id: number;
+  name: string;
+  options: Option[];
+}

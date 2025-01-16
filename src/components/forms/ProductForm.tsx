@@ -7,6 +7,8 @@ import Image from 'next/image';
 import InputTwo from '../inputs/InputTwo';
 import CheckboxInput from '../inputs/CheckboxInput';
 import { UserProductsDataProps } from '@/utils/types';
+import { collections } from '@/utils/data';
+import ProductOptions from '../ProductOptions';
 
 type productFormProps = UserProductsDataProps & {
   updateFields: (fields: Partial<UserProductsDataProps>) => void
@@ -62,22 +64,16 @@ const ProductForm = ({
 
                 <div className="px-1 py-2 space-y-2">
                   <div className="flex items-center gap-2 flex-wrap px-2">
-                    <span className='bg-customGray py-1 px-3 rounded-full text-xs flex items-center gap-2'>
-                      <span className='capitalize'>Collection</span>
-                      <span>
-                        <ButtonNeutral
-                          icon1={<div className="relative size-4 rounded-full hover:bg-neutral-300 p-2"><Image src="/images/close.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                        />
+                    {collections.map(collection => (
+                      <span key={collection.id} className='bg-customGray py-1 px-3 rounded-full text-xs flex items-center gap-2'>
+                        <span className='capitalize'>{collection.text}</span>
+                        <span>
+                          <ButtonNeutral
+                            icon1={<div className="relative size-4 rounded-full hover:bg-neutral-300 p-2"><Image src="/images/close.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
+                          />
+                        </span>
                       </span>
-                    </span>
-                    <span className='bg-customGray py-1 px-3 rounded-full text-xs flex items-center gap-2'>
-                      <span className='capitalize'>Interest</span>
-                      <span>
-                        <ButtonNeutral
-                          icon1={<div className="relative size-4 rounded-full hover:bg-neutral-300 p-2"><Image src="/images/close.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                        />
-                      </span>
-                    </span>
+                    ))}
                   </div>
                   <input type="text" placeholder='Search or create collection' className='w-full p-2 border-0 text-sm focus:outline-none focus:ring-[1px] focus:ring-primary rounded-lg' />
                 </div>
@@ -177,101 +173,7 @@ const ProductForm = ({
                 <p id='variableProduct' className='text-xs'>This product is variable; has different colors, sizes, weight, materials, etc.</p>
               </div>
               <div className="space-y-2 mb-4 px-4 md:px-4">
-                <div className="w-full flex flex-col gap-1 border rounded-xl py-2 divide-y-2 divide-neutral-100">
-                  <div className="flex items-center gap-3 justify-between px-3">
-                    <div className="flex flex-col">
-                      <p className='text-sm font-semibold text-neutral-500'>Option 1</p>
-                      <p className='w-full font-semibold text-sm'>Color</p>
-                    </div>
-                    <span>
-                      <ButtonNeutral
-                        icon1={<div className="relative size-8 rounded-full hover:bg-customGray"><Image src="/images/Icon button.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                      />
-                    </span>
-                  </div>
-
-                  <div className="px-3 py-2 space-y-2">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className='bg-customGray py-1 px-3 rounded-full text-xs flex items-center gap-2'>
-                        <span>Red</span>
-                        <span>
-                          <ButtonNeutral
-                            icon1={<div className="relative size-4 rounded-full hover:bg-neutral-300 p-2"><Image src="/images/close.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                          />
-                        </span>
-                      </span>
-                      <span className='bg-customGray py-1 px-3 rounded-full text-xs flex items-center gap-2'>
-                        <span>White</span>
-                        <span>
-                          <ButtonNeutral
-                            icon1={<div className="relative size-4 rounded-full hover:bg-neutral-300 p-2"><Image src="/images/close.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                          />
-                        </span>
-                      </span>
-                      <span className='bg-customGray py-1 px-3 rounded-full text-xs flex items-center gap-2'>
-                        <span>Black</span>
-                        <span>
-                          <ButtonNeutral
-                            icon1={<div className="relative size-4 rounded-full hover:bg-neutral-300 p-2"><Image src="/images/close.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                          />
-                        </span>
-                      </span>
-                    </div>
-                    <input type="text" placeholder='Enter values' className='w-full p-2 border-0 text-sm focus:outline-none focus:ring-[1px] focus:ring-primary rounded-lg' />
-                  </div>
-                </div>
-                
-                <div className="w-full flex flex-col gap-1 border rounded-xl py-2 divide-y-2 divide-neutral-100">
-                  <div className="flex items-center gap-3 justify-between px-3">
-                    <div className="flex flex-col">
-                      <p className='text-sm font-semibold text-neutral-500'>Option 2</p>
-                      <p className='w-full font-semibold text-sm'>Size</p>
-                    </div>
-                    <span>
-                      <ButtonNeutral
-                        icon1={<div className="relative size-8 rounded-full hover:bg-customGray"><Image src="/images/Icon button.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                      />
-                    </span>
-                  </div>
-
-                  <div className="px-3 py-2 space-y-2">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className='bg-customGray py-1 px-3 rounded-full text-xs flex items-center gap-2'>
-                        <span className='uppercase'>sm</span>
-                        <span>
-                          <ButtonNeutral
-                            icon1={<div className="relative size-4 rounded-full hover:bg-neutral-300 p-2"><Image src="/images/close.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                          />
-                        </span>
-                      </span>
-                      <span className='bg-customGray py-1 px-3 rounded-full text-xs flex items-center gap-2'>
-                        <span className='uppercase'>md</span>
-                        <span>
-                          <ButtonNeutral
-                            icon1={<div className="relative size-4 rounded-full hover:bg-neutral-300 p-2"><Image src="/images/close.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                          />
-                        </span>
-                      </span>
-                      <span className='bg-customGray py-1 px-3 rounded-full text-xs flex items-center gap-2'>
-                        <span className='uppercase'>lg</span>
-                        <span>
-                          <ButtonNeutral
-                            icon1={<div className="relative size-4 rounded-full hover:bg-neutral-300 p-2"><Image src="/images/close.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                          />
-                        </span>
-                      </span>
-                      <span className='bg-customGray py-1 px-3 rounded-full text-xs flex items-center gap-2'>
-                        <span className='uppercase'>xl</span>
-                        <span>
-                          <ButtonNeutral
-                            icon1={<div className="relative size-4 rounded-full hover:bg-neutral-300 p-2"><Image src="/images/close.svg" sizes="100%" fill alt="Arrow Left" className={`rounded-full object-cover`} /></div>}
-                          />
-                        </span>
-                      </span>
-                    </div>
-                    <input type="text" placeholder='Enter values' className='w-full p-2 border-0 text-sm focus:outline-none focus:ring-[1px] focus:ring-primary rounded-lg' />
-                  </div>
-                </div>
+                <ProductOptions />
               </div>
             </>
             }
