@@ -29,25 +29,28 @@ const ProductPreview = () => {
 
   return (
     <div className='min-h-[80vh] h-fit'>
-      <Slider {...settings}>
-        {someImages.map((image, index) => (
-          <div key={image.id} className="relative w-full md:w-1/2 h-[62vh]">
-            <Image
-              src={image.img || "/images/imagePlaceholder.jpeg"}
-              alt="Shopping Sale's icon"
-              fill
-              style={{ objectFit: 'cover' }}
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              // sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              blurDataURL="/images/imagePlaceholder.jpeg"
-              placeholder="blur"
-            />
-            <span className='size-8 flex items-center justify-center text-sm rounded-full bg-[#00000027] shadow-md text-white absolute bottom-2 right-2'>
-              {index+1}/{someImages.length}
-            </span>
-          </div>
-        ))}
-      </Slider>
+      <div className='w-full h-fit bg-customGray'>
+        <div className="w-full sm:w-96 mx-auto">
+          <Slider {...settings}>
+            {someImages.map((image, index) => (
+              <div key={image.id} className="relative w-full h-[62vh]">
+                <Image
+                  src={image.img || "/images/imagePlaceholder.jpeg"}
+                  alt="Shopping Sale's icon"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  blurDataURL="/images/imagePlaceholder.jpeg"
+                  placeholder="blur"
+                />
+                <span className='size-8 flex items-center justify-center text-sm rounded-full bg-[#00000027] shadow-md text-white absolute bottom-2 right-2'>
+                  {index+1}/{someImages.length}
+                </span>
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
 
       <div className="flex flex-col md:flex-row space-y-3 md:space-x-16 lg:space-x-24 mt-2 mb-2 px-3 sm:px-10 md:px-12 lg:px-20 divide-y-2 divide-neutral-100 md:divide-y-0">
         <div className='w-full md:w-1/2 md:space-y-10 divide-y-2 divide-neutral-100 md:divide-y-0'>
