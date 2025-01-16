@@ -10,22 +10,29 @@ import BasicInfoForm from '@/components/forms/BasicInfoForm';
 import InitialForm from '@/components/forms/InitialForm';
 import StoreForm from '@/components/forms/StoreForm';
 import ProductForm from '@/components/forms/ProductForm';
-import { FormEvent } from 'react';
-import ButtonLinkOne from '@/components/button/ButtonLinkOne';
+import { FormEvent, useState } from 'react';
 import Link from 'next/link';
-// import { INITIAL_USER_DATA } from '@/utils/data';
-// import { FormData } from '@/utils/types';
+import { INITIAL_USER_DATA } from '@/utils/data';
+import { FormData } from '@/utils/types';
+import { useAuthStore } from '@/context/AuthStoreContext';
 
-// const USER_DATA: FormData = INITIAL_USER_DATA;
+const USER_DATA: FormData = INITIAL_USER_DATA;
 
 const Users = () => {
-  // const [data, setData] = useState(USER_DATA);
+  const [data, setData] = useState(USER_DATA);
+  const {saveUserInfo} = useAuthStore();
 
-  const {currentStepIndex, currentStep, stepForward, stepBack, isFirstStep} = useForms([
-    <InitialForm key="initial" />,
-    <BasicInfoForm key="basic-info" />,
-    <StoreForm key="store" />,
-    <ProductForm key="product" />,
+  const updateFields = (fields: Partial<FormData>) => {
+    setData(prev => {
+      return {...prev, ...fields}
+    });
+  };
+
+  const {currentStepIndex, currentStep, stepForward, stepBack, isFirstStep, isLastStep} = useForms([
+    <InitialForm key="initial" {...data} updateFields={updateFields} />,
+    <BasicInfoForm key="basic-info" {...data} updateFields={updateFields} />,
+    <StoreForm key="store" {...data} updateFields={updateFields} />,
+    <ProductForm key="product" {...data} updateFields={updateFields} />,
   ]);
 
   const router = useRouter();
@@ -45,7 +52,10 @@ const Users = () => {
   
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    handleContinue();
+    if (!isLastStep) return handleContinue();
+
+    saveUserInfo(data);
+    router.push('/products');
   };
 
   return (
@@ -103,7 +113,7 @@ const Users = () => {
         {currentStepIndex === 3 ?
           <div className="flex items-center justify-center gap-3 sm:gap-10 md:gap-24 border-t border-customGray pt-5 pb-10">
             <ButtonTwo onClick={handleBack} btnText="Cancel" classes='w-[42%] md:w-[38%] lg:w-[40%]' />
-            <ButtonLinkOne url='/products' btnText="Save" classes='w-[42%] md:w-[38%] lg:w-[40%]' />
+            <ButtonOne btnText="Save" classes='w-[42%] md:w-[38%] lg:w-[40%]' />
           </div>
           :
           <div className="flex items-center justify-center border-t border-customGray pt-4 pb-5">

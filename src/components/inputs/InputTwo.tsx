@@ -6,12 +6,13 @@ type InputProps = {
   floatingLabel?: string;
   id?: string;
   classes?: string;
+  value?: string;
   type?: 'text' | 'email' | 'password' | 'number' | 'file' | 'checkbox';
   disabled?: boolean;
   required?: boolean;
   autoFocus?: boolean;
   checked?: boolean;
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const InputTwo: React.FC<InputProps> = ({
@@ -20,6 +21,7 @@ const InputTwo: React.FC<InputProps> = ({
   floatingLabel = ' ',
   id = '',
   classes = '',
+  value = '',
   type = 'text',
   disabled = false,
   required = false,
@@ -37,6 +39,7 @@ const InputTwo: React.FC<InputProps> = ({
         checked={checked}
         disabled={disabled}
         type={type}
+        value={value}
         placeholder={placeholderText}
         onChange={onChange}
         className={`block h-12 pt-2 px-3 text-base text-secondary bg-white border border-gray-300 rounded-xl appearance-none focus:outline-none focus:ring-[1px] focus:ring-primary peer ${classes}`}

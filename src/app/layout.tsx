@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { DM_Sans } from 'next/font/google';
-import { AuthProvider } from "@/context/AuthContext";
+import { AuthProvider } from "@/context/AuthStoreContext";
 
 const dmSans = DM_Sans({ subsets: ['latin'], weight: ['300', '600'], variable: '--font-dm-sans' });
 

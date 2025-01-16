@@ -8,7 +8,7 @@
 }
   
 
-/* customize the checkbox */
+/* customized checkbox */
 .custom-checkbox:checked {
     background-color: #8A226F;
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>');
@@ -16,4 +16,29 @@
     background-size: 75%;
     background-repeat: no-repeat;
 }
+  
+
+/* loader */
+.loader {
+    display: inline-grid;
+    width: 40px;
+    aspect-ratio: 1;
+  }
+  .loader:before,
+  .loader:after {
+    content: "";
+    grid-area: 1/1;
+    border-radius: 50%;
+    background: repeating-conic-gradient(#8A226F 0 60deg, #8d6081 0 120deg);
+    animation: l6 4s linear infinite;
+  }
+  .loader:before {
+    translate: 0 -100%;
+  }
+  .loader:after {
+    padding: 20%;
+    mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+    animation-direction: reverse;
+  }
+  @keyframes l6 {to { rotate: 1turn; }}
   

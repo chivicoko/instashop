@@ -6,8 +6,21 @@ import ButtonNeutral from '../button/ButtonNeutral';
 import Image from 'next/image';
 import InputTwo from '../inputs/InputTwo';
 import CheckboxInput from '../inputs/CheckboxInput';
+import { UserProductsDataProps } from '@/utils/types';
 
-const ProductForm = () => {
+type productFormProps = UserProductsDataProps & {
+  updateFields: (fields: Partial<UserProductsDataProps>) => void
+}
+
+const ProductForm = ({
+  productTitle,
+  productDesc,
+  productPrice,
+  productOldPrice,
+  productCollections,
+  productInventoryStocks,
+  updateFields}: productFormProps) => {
+
   const [basicDetailsOpen, setBasicDetailsOpen] = useState<boolean>(true);
   const [productImagesOpen, setProductImagesOpen] = useState<boolean>(true);
   const [inventoryVariantsOpen, setInventoryVariantsOpen] = useState<boolean>(true);
@@ -34,13 +47,13 @@ const ProductForm = () => {
             {basicDetailsOpen && 
             <div className="space-y-3 mt-[6px] px-4 md:px-4">
 
-              <InputTwo autoFocus required classes='w-full' floatingLabel='Product Title' />
-              <InputTwo required classes='w-full' floatingLabel='Product description' />
+              <InputTwo autoFocus required value={productTitle} onChange={e => updateFields({productTitle: e.target.value})} classes='w-full' floatingLabel='Product Title' />
+              <InputTwo required value={productDesc} onChange={e => updateFields({productDesc: e.target.value})} classes='w-full' floatingLabel='Product description' />
               <div className="flex items-center justify-between gap-2">
-                <InputTwo required classes='w-[100%]' floatingLabel='Price' />
-                <InputTwo required classes='w-[100%]' floatingLabel='Old price' />
+                <InputTwo required value={productPrice} onChange={e => updateFields({productPrice: e.target.value})} classes='w-[100%]' floatingLabel='Price' />
+                <InputTwo required value={productOldPrice} onChange={e => updateFields({productOldPrice: e.target.value})} classes='w-[100%]' floatingLabel='Old price' />
               </div>
-              <InputTwo required classes='w-full' floatingLabel='Product collections' />
+              <InputTwo required value={productCollections} onChange={e => updateFields({productCollections: e.target.value})} classes='w-full' floatingLabel='Product collections' />
               
               <div className="w-full flex flex-col gap-1 border rounded-xl pt-2">
                 <div className="flex items-center gap-3 justify-between px-3">
@@ -70,7 +83,7 @@ const ProductForm = () => {
                 </div>
               </div>
 
-              <InputTwo required classes='w-full' floatingLabel='Inventory stocks' />
+              <InputTwo required value={productInventoryStocks} onChange={e => updateFields({productInventoryStocks: e.target.value})} classes='w-full' floatingLabel='Inventory stocks' />
             </div>
             }
           </div>

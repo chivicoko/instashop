@@ -2,8 +2,13 @@ import React from 'react'
 import ButtonNeutral from '../button/ButtonNeutral';
 import Image from 'next/image';
 import InputTwo from '../inputs/InputTwo';
+import { UserBasicDataProps } from '@/utils/types';
 
-const BasicInfoForm = () => {
+type InitialBasicInfoProps = UserBasicDataProps & {
+  updateFields: (fields: Partial<UserBasicDataProps>) => void
+}
+
+const BasicInfoForm = ({fullName, userName, phoneNumber, email, updateFields}: InitialBasicInfoProps) => {
 
   return (
     <div className='h-[75vh] px-5 md:px-5 mx-auto max-w-xl'>
@@ -30,10 +35,10 @@ const BasicInfoForm = () => {
       <p className='text-sm text-neutral-500 mt-4 mb-4'>Or enter manually</p>
 
       <div className="space-y-3 mt-[6px] flex items-center justify-center flex-wrap">
-        <InputTwo autoFocus required classes='w-full' floatingLabel='Full name' />
-        <InputTwo required classes='w-full' floatingLabel='Username' />
-        <InputTwo required classes='w-full' floatingLabel='Phone number' />
-        <InputTwo required classes='w-full' floatingLabel='Email' />
+        <InputTwo autoFocus required value={fullName} onChange={e => updateFields({fullName: e.target.value})} classes='w-full' floatingLabel='Full name' />
+        <InputTwo required value={userName} onChange={e => updateFields({userName: e.target.value})} classes='w-full' floatingLabel='Username' />
+        <InputTwo required value={phoneNumber} onChange={e => updateFields({phoneNumber: e.target.value})} classes='w-full' floatingLabel='Phone number' />
+        <InputTwo required value={email} onChange={e => updateFields({email: e.target.value})} classes='w-full' floatingLabel='Email' />
       </div>
     </div>
   )

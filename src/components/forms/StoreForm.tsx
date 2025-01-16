@@ -2,8 +2,13 @@ import React from 'react'
 import InputOne from '../inputs/InputOne';
 import Image from 'next/image';
 import InputTwo from '../inputs/InputTwo';
+import { UserStoreDataProps } from '@/utils/types';
 
-const StoreForm = () => {
+type storeFormProps = UserStoreDataProps & {
+  updateFields: (fields: Partial<UserStoreDataProps>) => void
+}
+
+const StoreForm = ({storeName, storeTagName, storePhoneNumber, storeEmail, storeCategory, updateFields}: storeFormProps) => {
 
   return (
     <div className='h-[75vh] px-5 md:px-5 space-y-3 mx-auto max-w-xl w-full'>
@@ -33,11 +38,11 @@ const StoreForm = () => {
       </div>
 
       <div className="space-y-3">
-        <InputTwo autoFocus required classes='w-full' floatingLabel='Store name' />
-        <InputTwo required classes='w-full' floatingLabel='Store tag name' />
-        <InputTwo required classes='w-full' floatingLabel='Store phone number' />
-        <InputTwo required classes='w-full' floatingLabel='Store email' />
-        <InputTwo required classes='w-full' floatingLabel='Category' />
+        <InputTwo autoFocus required value={storeName} onChange={e => updateFields({storeName: e.target.value})} classes='w-full' floatingLabel='Store name' />
+        <InputTwo required value={storeTagName} onChange={e => updateFields({storeTagName: e.target.value})} classes='w-full' floatingLabel='Store tag name' />
+        <InputTwo required value={storePhoneNumber} onChange={e => updateFields({storePhoneNumber: e.target.value})} classes='w-full' floatingLabel='Store phone number' />
+        <InputTwo required value={storeEmail} onChange={e => updateFields({storeEmail: e.target.value})} classes='w-full' floatingLabel='Store email' />
+        <InputTwo required value={storeCategory} onChange={e => updateFields({storeCategory: e.target.value})} classes='w-full' floatingLabel='Category' />
       </div>
     </div>
   )

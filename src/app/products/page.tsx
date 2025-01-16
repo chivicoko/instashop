@@ -3,12 +3,20 @@
 import ButtonLinkOne from '@/components/button/ButtonLinkOne'
 import ButtonNeutral from '@/components/button/ButtonNeutral'
 import ProductPreview from '@/components/ProductPreview'
+import { useAuthStore } from '@/context/AuthStoreContext';
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Products = () => {
+  const { currentUserInfo } = useAuthStore();
   const router = useRouter();
+  
+  useEffect(() => {
+    if (!currentUserInfo) {
+      router.push('/users');
+    }
+  }, [currentUserInfo, router]);
 
   return (
     <section className="h-screen w-full flex-col">

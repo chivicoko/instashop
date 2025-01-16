@@ -5,6 +5,7 @@ type InputProps = {
   placeholderText?: string;
   id?: string;
   classes?: string;
+  value?: string;
   type?: 'text' | 'email' | 'password' | 'number' | 'file' | 'checkbox';
   disabled?: boolean;
   required?: boolean;
@@ -18,6 +19,7 @@ const InputOne: React.FC<InputProps> = ({
   placeholderText = '',
   id = '',
   classes = '',
+  value = '',
   type = 'text',
   disabled = false,
   required = false,
@@ -35,6 +37,7 @@ const InputOne: React.FC<InputProps> = ({
       placeholder={placeholderText}
       autoFocus={autoFocus}
       checked={checked}
+      value={value}
       disabled={disabled}
       onChange={onChange}
       className={`text-secondary rounded-xl p-[0.625rem] border outline-0 focus:ring-2 focus:ring-secondary focus:ring-offset-2 outline-none text-sm ${classes}`}
